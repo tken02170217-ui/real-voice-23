@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>23区・リアルボイスつなぎ</title>
-<meta name="description" content="東京23区から、希望の声を集めよう。同世代のリアルな声を投稿・共有できるアプリです。">
+<meta name="description" content="東京23区から、希望の声を集めよう同世代のリアルな声を投稿・共有できるアプリです">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <style>
@@ -134,7 +134,7 @@ footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
 <span class="sparkle" style="left:16%; bottom:0; animation-delay:1.3s;">☀️</span>
 <span class="badge">23区リアルボイスつなぎ</span>
 <h1>東京23区から<br><span class="grad">希望の声</span>を集めよう</h1>
-<p class="sub">物価、家賃、学費、将来のこと。<br>同世代のリアルなひとことを<br>23区でつないでいく場所です。</p>
+<p class="sub">物価、家賃、学費、将来のこと<br>同世代のリアルなひとことを<br>23区でつないでいく場所です</p>
 <div id="cheer">あなたのひとことが、誰かの一歩になる 🌱</div>
 <div class="stats">
 <div class="stat"><b id="statTotal">0</b><span>集まった声</span></div>
@@ -147,7 +147,7 @@ footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
 
 <section class="card">
 <h2>📣 声を届ける</h2>
-<p class="hint">ひとことでOK。<br>※ニックネームは空欄なら「匿名」になります。</p>
+<p class="hint">ひとことでOK<br>※ニックネームは空欄なら「匿名」になります</p>
 <label for="ward">エリア（区）</label>
 <select id="ward"></select>
 <label>ワンテーマ</label>
@@ -162,14 +162,14 @@ footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
 
 <section class="card spot">
 <h2>🌟 今日の23区ボイス</h2>
-<p class="hint">みんなの声から、ランダムで1つピックアップ。</p>
-<div id="spotBody"><p class="empty">まだ声が届いていません。最初の1件を届けてみてね。</p></div>
+<p class="hint">みんなの声から、ランダムで1つピックアップ</p>
+<div id="spotBody"><p class="empty">まだ声が届いていません最初の1件を届けてみてね</p></div>
 <div class="rowbtns"><button class="subbtn" id="spotNext">🎲 別の声を見る</button></div>
 </section>
 
 <section class="card">
 <h2>🗼 23区ボード</h2>
-<p class="hint">声が届いた区は光ります。タップすると、その区の声だけ見られます。</p>
+<p class="hint">声が届いた区は光ります<br>タップすると、その区の声だけ見られます</p>
 <div class="board" id="board"></div>
 </section>
 
@@ -191,12 +191,12 @@ footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
 
 <section class="card">
 <h2>📋 まとめ</h2>
-<p class="hint">2週に1回の振り返りに。そのままコピーして共有できます。</p>
+<p class="hint">2週に1回の振り返りにそのままコピーして共有できます</p>
 <div class="summary-box" id="summary">読み込み中…</div>
 <div class="rowbtns"><button class="subbtn" id="copyBtn">📋 まとめをコピー</button></div>
 </section>
 
-<footer>23区・リアルボイスつなぎ — みんなの声で、東京に光を灯そう。</footer>
+<footer>23区・リアルボイスつなぎ — みんなの声で、東京に光を灯そう</footer>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -237,7 +237,7 @@ function countUp(el, to){ const from = parseInt(el.dataset.v||"0",10); const t0=
 
 async function load(){
 const { data, error} = await sb.from("voices").select("*").order("created_at",{ascending:false}).limit(500);
-if(error){ $("feed").innerHTML = `<p class="empty">読み込みに失敗しました。少し待って再読み込みしてね。</p>`; return;}
+if(error){ $("feed").innerHTML = `<p class="empty">読み込みに失敗しました少し待って再読み込みしてね</p>`; return;}
 voices = data || [];
 render(true);
 }
@@ -270,7 +270,7 @@ renderSummary(counts, covered);
 
 function renderSpot(){
 const box = $("spotBody");
-if(!voices.length){ box.innerHTML = `<p class="empty">まだ声が届いていません。最初の1件を届けてみてね。</p>`; return;}
+if(!voices.length){ box.innerHTML = `<p class="empty">まだ声が届いていません最初の1件を届けてみてね</p>`; return;}
 const v = voices[Math.floor(Math.random()*voices.length)];
 box.innerHTML = `<p>「${esc(v.body)}」</p><div class="meta" style="margin-top:10px;"><span class="tag">${esc(v.ward)}</span><span class="tag theme">${esc(v.theme)}</span><span class="who">${esc(v.nickname||"匿名")} ・ ${timeAgo(new Date(v.created_at))}</span></div>`;
 }
@@ -307,7 +307,7 @@ function renderFeed(){
 const list = filtered();
 const top = [...list].filter(v=>(v.wakaru+v.sorena+v.ouen)>0).sort((a,b)=>(b.wakaru+b.sorena+b.ouen)-(a.wakaru+a.sorena+a.ouen))[0];
 $("highlight").innerHTML = top? `<p class="hint" style="margin-bottom:8px;">⭐ 共感ハイライト</p>` + voiceCard(top): "";
-$("feed").innerHTML = list.length? list.map(voiceCard).join(""): `<p class="empty">この条件の声はまだありません。</p>`;
+$("feed").innerHTML = list.length? list.map(voiceCard).join(""): `<p class="empty">この条件の声はまだありません</p>`;
 }
 
 function renderSummary(counts, covered){
@@ -358,7 +358,7 @@ if(error){ toast("届けられなかった…もう一度試してね"); return;
 $("body").value=""; $("cnt").textContent="0";
 await load();
 if(wardBefore===0){ celebrate(true); toast(`✨ 新しい区に光が灯った！（${$("ward").value}）`);}
-else { celebrate(false); toast("声が届いたよ。ありがとう！");}
+else { celebrate(false); toast("声が届いたよありがとう！");}
 });
 
 load();
