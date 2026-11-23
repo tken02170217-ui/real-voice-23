@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>23区・リアルボイスつなぎ | 東京学生部</title>
+<title>23区・リアルボイスつなぎ</title>
 <meta name="description" content="東京23区から、希望の声を集めよう。同世代のリアルな声を投稿・共有できるアプリです。">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -89,6 +89,37 @@ button.post:disabled{opacity:.55;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .empty{text-align:center; color:var(--muted); padding:26px 8px; font-size:14px;}
 footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
+  /* スマホ向けレイアウト */
+  @media (max-width: 640px){
+    .wrap{padding:12px 10px 48px;}
+    header.hero{padding:18px 4px 4px;}
+    h1{font-size:31px; line-height:1.35;}
+    .sub{font-size:14px; line-height:1.7;}
+    .sparkle{font-size:16px;}
+    .stats{gap:8px; margin:14px 0 2px;}
+    .stat{flex:1 1 0; min-width:0; padding:10px 6px; border-radius:14px;}
+    .stat b{font-size:20px;}
+    .stat span{font-size:10px;}
+    .progress{height:18px;}
+    section.card{padding:16px 14px; border-radius:20px; margin-top:18px;}
+    h2{font-size:18px;}
+    .board{grid-template-columns:repeat(3,1fr); gap:8px;}
+    .tile{padding:10px 4px; border-radius:13px;}
+    .tile b{font-size:12px;}
+    .tile span{font-size:11px;}
+    .filters{flex-direction:column;}
+    .filters select{width:100%; flex:none;}
+    .chip{padding:9px 13px; font-size:13px;}
+    .react{padding:8px 12px; font-size:13px;}
+    .reacts{flex-wrap:wrap;}
+    .voice{padding:13px;}
+    .voice p{font-size:15px;}
+    .voice .who{margin-left:0; width:100%;}
+    .spot p{font-size:17px;}
+    button.post{padding:16px; font-size:16px;}
+    .subbtn{flex:1; text-align:center;}
+    .toast{font-size:13px; bottom:16px;}
+  }
 </style>
 </head>
 <body>
@@ -97,9 +128,9 @@ footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
 <span class="sparkle" style="left:8%; top:22px;">✨</span>
 <span class="sparkle" style="right:10%; top:52px; animation-delay:.7s;">🌈</span>
 <span class="sparkle" style="left:16%; bottom:0; animation-delay:1.3s;">☀️</span>
-<span class="badge">東京学生部 ・ 23区リアルボイスつなぎ</span>
-<h1>東京23区から、<span class="grad">希望の声</span>を集めよう</h1>
-<p class="sub">物価、家賃、学費、将来のこと。同世代のリアルなひとことを、23区でつないでいく場所です。</p>
+<span class="badge">23区リアルボイスつなぎ</span>
+<h1>東京23区から<br><span class="grad">希望の声</span>を集めよう</h1>
+<p class="sub">物価、家賃、学費、将来のこと。<br>同世代のリアルなひとことを<br>23区でつないでいく場所です。</p>
 <div id="cheer">あなたのひとことが、誰かの一歩になる 🌱</div>
 <div class="stats">
 <div class="stat"><b id="statTotal">0</b><span>集まった声</span></div>
@@ -112,7 +143,7 @@ footer{text-align:center; color:var(--muted); font-size:12px; margin-top:34px;}
 
 <section class="card">
 <h2>📣 声を届ける</h2>
-<p class="hint">140字までのひとことでOK。ニックネームは空欄なら「匿名」になります。</p>
+<p class="hint">140字までのひとことでOK。<br>ニックネームは空欄なら「匿名」になります。</p>
 <label for="ward">エリア（区）</label>
 <select id="ward"></select>
 <label>ワンテーマ</label>
